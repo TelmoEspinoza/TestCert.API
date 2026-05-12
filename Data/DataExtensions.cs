@@ -18,7 +18,7 @@ public static class DataExtensions
             if (!context.Set<Test>().Any())
             {
                 context.Set<Test>().AddRange(
-            new Test { KtReferenceNumber = "INV45215", Description = "MOCK INFO OF A TEST ", Total = 250.45M });
+            new Test { KtReferenceNumber = "INV00001", Description = "MOCK INFO OF A TEST NUMBER 1", Total = 0.01M });
 
                 context.SaveChanges();
             }
@@ -27,12 +27,11 @@ public static class DataExtensions
                 context.Set<Equipment>().AddRange(
             new Equipment
             {
-                EquipKtId = "K036543",
-                EquipPlasticTagId = "RED34563",
+                EquipKtId = "K0001",
+                EquipPlasticTagId = "RED0001",
                 EquipDescription = "1L10MMG80 LOL-CON-EGH/CHN-CSLH",
                 EquipActive = true,
-                Price = 250M,
-                TestId = 1
+                Price = 0.01M
             });
                 context.SaveChanges();
             }

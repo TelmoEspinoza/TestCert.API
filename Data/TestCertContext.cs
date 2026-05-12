@@ -14,4 +14,6 @@ public class TestCertContext : DbContext
     { }
     public DbSet<Test> Tests => Set<Test>();
     public DbSet<Equipment> Equipments => Set<Equipment>();
+
+    public DbSet<Customer> Customers => Set<Customer>();
 }

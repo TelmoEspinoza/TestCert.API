@@ -10,7 +10,7 @@ public partial class Equipment
     public int Id { get; set; }
     [Required]
     [Column(TypeName = "nvarchar(10)")]
-    public required string EquipKtId { get; set; }
+    public string? EquipKtId { get; set; }
     [Column(TypeName = "nvarchar(10)")]
     public string? EquipPlasticTagId { get; set; }
     [Column(TypeName = "nvarchar(200)")]
@@ -24,10 +24,10 @@ public partial class Equipment
     [Required]
     [Column(TypeName = "decimal(18,2)")]
     public required decimal Price { get; set; }
+     public int Stock { get; set; } // Available stock for orders
 
-    public Test? Test { get; set; }
-
-    public int TestId { get; set; }
+  
+  
 
 
 }

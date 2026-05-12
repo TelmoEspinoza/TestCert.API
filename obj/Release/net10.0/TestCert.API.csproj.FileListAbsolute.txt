@@ -157,3 +157,4 @@
 /Users/telmoespinoza/Documents/CSharpProjects/FullStack/TestCertSystem/TestCert.API/obj/Release/net10.0/TestCert.API.pdb
 /Users/telmoespinoza/Documents/CSharpProjects/FullStack/TestCertSystem/TestCert.API/obj/Release/net10.0/TestCert.API.genruntimeconfig.cache
 /Users/telmoespinoza/Documents/CSharpProjects/FullStack/TestCertSystem/TestCert.API/obj/Release/net10.0/ref/TestCert.API.dll
+/Users/telmoespinoza/Documents/CSharpProjects/FullStack/TestCertSystem/TestCert.API/obj/Release/net10.0/TestCert.API.sourcelink.json

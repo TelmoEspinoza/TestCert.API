@@ -22,6 +22,27 @@ namespace TestCert.API.data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("TestCert.API.Models.Customer", b =>
+                {
+                    b.Property<int>("CustomerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerId"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CustomerId");
+
+                    b.ToTable("Customers");
+                });
+
             modelBuilder.Entity("TestCert.API.Models.Equipment", b =>
                 {
                     b.Property<int>("Id")
@@ -52,12 +73,10 @@ namespace TestCert.API.data.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("TestId")
+                    b.Property<int>("Stock")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("TestId");
 
                     b.ToTable("Equipments");
                 });
@@ -70,6 +89,9 @@ namespace TestCert.API.data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -81,23 +103,81 @@ namespace TestCert.API.data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CustomerId");
+
                     b.ToTable("Tests");
                 });
 
-            modelBuilder.Entity("TestCert.API.Models.Equipment", b =>
+            modelBuilder.Entity("TestCert.API.Models.TestItem", b =>
                 {
-                    b.HasOne("TestCert.API.Models.Test", "Test")
-                        .WithMany("TestEquipments")
-                        .HasForeignKey("TestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("TestItemId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.Navigation("Test");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TestItemId"));
+
+                    b.Property<int>("EquipmentId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("LineTotal")
+                        .HasColumnType("decimal(12,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TestId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(12,2)");
+
+                    b.HasKey("TestItemId");
+
+                    b.HasIndex("EquipmentId");
+
+                    b.HasIndex("TestId");
+
+                    b.ToTable("TestItem");
                 });
 
             modelBuilder.Entity("TestCert.API.Models.Test", b =>
                 {
-                    b.Navigation("TestEquipments");
+                    b.HasOne("TestCert.API.Models.Customer", "Customer")
+                        .WithMany("Tests")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("TestCert.API.Models.TestItem", b =>
+                {
+                    b.HasOne("TestCert.API.Models.Equipment", "Equipment")
+                        .WithMany()
+                        .HasForeignKey("EquipmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TestCert.API.Models.Test", "Test")
+                        .WithMany("TestItems")
+                        .HasForeignKey("TestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Equipment");
+
+                    b.Navigation("Test");
+                });
+
+            modelBuilder.Entity("TestCert.API.Models.Customer", b =>
+                {
+                    b.Navigation("Tests");
+                });
+
+            modelBuilder.Entity("TestCert.API.Models.Test", b =>
+                {
+                    b.Navigation("TestItems");
                 });
 #pragma warning restore 612, 618
         }

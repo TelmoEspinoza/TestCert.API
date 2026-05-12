@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TestCert.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+47cc81147ab18297ce21ee9d5fe832fa8b0cf474")]
 [assembly: System.Reflection.AssemblyProductAttribute("TestCert.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TestCert.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
